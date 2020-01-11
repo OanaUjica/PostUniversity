@@ -2,7 +2,7 @@
 
 namespace ProgrammingFundamentals
 {
-    class Program
+    class Run
     {
         static void Main(string[] args)
         {

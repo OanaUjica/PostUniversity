@@ -1,0 +1,10 @@
+9
+Spania,87600000
+Franta,130000000
+Elvetia,450000
+Belgia,365000
+Romania,62000000
+Portugalia,95000000
+Germania,124000000
+Islanda,894000
+Italia,96500000
