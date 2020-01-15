@@ -1,4 +1,4 @@
-# PostUniversity
+# Post University program on Computer Science
 
 1. Module 2 
 
