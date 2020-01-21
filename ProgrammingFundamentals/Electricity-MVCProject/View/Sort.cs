@@ -7,6 +7,10 @@ namespace Electricity_MVCProject.View
 {
     class Sort
     {
+        /// <summary>
+        /// Sort table alphabetically after the names fo the countries.
+        /// </summary>
+        /// <param name="table"></param>
         public static void SortAlphabetically(Country[] table)
         {
             for (int i = 0; i < table.Length-1; i++)
@@ -23,10 +27,14 @@ namespace Electricity_MVCProject.View
             }
         }
 
-        public static Country[] SortAfterElectricity(Country[] table)
+        /// <summary>
+        /// Sort table descending after the production of electricity using class ComparatorElectricity
+        /// </summary>
+        /// <param name="table"></param>
+        public static void SortAfterElectricity(Country[] table)
         {
-            Country[] unsortedTable = null;
-            return unsortedTable;
+            ComparatorElectricity comparatorElectricity = new ComparatorElectricity();
+            Array.Sort(table, comparatorElectricity);
         } 
     }
 }

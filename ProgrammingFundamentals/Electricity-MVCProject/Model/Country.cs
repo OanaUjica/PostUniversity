@@ -22,7 +22,7 @@ namespace Electricity_MVCProject.Model
 
         public string Name { get; set; }
         public NaturalNumber MonthlyProductionElectricalCurrent { get; set; }
-        public long ProcentFromTotalElectricalCurrent { get; set; }
+        public double ProcentFromTotalElectricalCurrent { get; set; }
 
         public Boolean SmallerNameThan(Country country)
         {
@@ -30,10 +30,10 @@ namespace Electricity_MVCProject.Model
             return false;
         }
 
-        public Boolean SmallerMonthlyProductionThan(Country country)
-        {
-            if (this.ProcentFromTotalElectricalCurrent.CompareTo(country.ProcentFromTotalElectricalCurrent) < 0) return true;
-            return false;
-        }
+        //public Boolean SmallerMonthlyProductionThan(Country country)
+        //{
+        //    if (this.ProcentFromTotalElectricalCurrent.CompareTo(country.ProcentFromTotalElectricalCurrent) < 0) return true;
+        //    return false;
+        //}
     }
 }

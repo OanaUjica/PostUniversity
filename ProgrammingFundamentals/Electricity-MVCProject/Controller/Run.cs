@@ -7,36 +7,10 @@ namespace Electricity_MVCProject
 {
     class Run
     {
-        public static int ReadInteger(string prompter)
-        {
-            WriteLine(prompter);
-            try
-            {
-                int number = int.Parse(ReadLine());
-                return number;
-            }
-            catch (Exception e)
-            {
-                WriteLine("Wrong option! Please try again.");
-                ReadInteger(prompter);
-            }
-            return 0;
-        }
-
-        public static int Menu()
-        {
-            WriteLine();
-            //WriteLine("1. Read data (keyboard)");
-            WriteLine("1. Read data (file)");
-            WriteLine("2. Print alphabetically");
-            //WriteLine("4. Print after monthly production");
-            WriteLine("0. Program ending");
-            return ReadInteger("Choose an option: ");
-        }
 
         static void Main(string[] args)
         {
-            int option = Menu();
+            int option = Print.PrintMenu();
             Country[] table = null;
 
             while (option != 0)
@@ -47,7 +21,7 @@ namespace Electricity_MVCProject
                     //    table = Model.Read.ReadFromKeyboard();
                     //    break;
                     case 1:
-                        table = Model.Read.ReadFromFile();
+                        table = Model.ReadOptions.ReadFromFile();
                         Print.PrintAll(table);
                         break;
                     case 2:
@@ -62,9 +36,9 @@ namespace Electricity_MVCProject
                         WriteLine("Wrong option! Please try again.");
                         break;
                 }
-                option = Menu();
+                option = Print.PrintMenu();
             }
-            Model.Read.ReadFromFile();
+            Model.ReadOptions.ReadFromFile();
         }
     }
 }
