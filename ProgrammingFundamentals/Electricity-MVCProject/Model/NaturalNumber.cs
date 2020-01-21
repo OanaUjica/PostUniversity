@@ -19,11 +19,6 @@ namespace Electricity_MVCProject.Model
             else this.number = 0;
         }
 
-        public NaturalNumber(NaturalNumber x)
-        {
-            if (this != x) number = x.number;
-        }
-
         public long Number
         {
             get { return number; }

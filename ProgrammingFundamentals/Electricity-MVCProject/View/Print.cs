@@ -6,42 +6,25 @@ namespace Electricity_MVCProject.View
 {
     class Print
     {
-        public static string ReadString(string str)
+        public static int PrintMenu()
         {
-            try
-            {
-                WriteLine(str);
-                string s = ReadLine();
-                return s;
-            }
-            catch (Exception e)
-            {
-                WriteLine("Wrong input! Please try again.");
-                return ReadString(str);
-            }
+            WriteLine();
+            WriteLine("1. Read data (keyboard)");
+            WriteLine("1. Read data (file)");
+            WriteLine("2. Print alphabetically");
+            WriteLine("4. Print after monthly production");
+            WriteLine("0. Program ending");
+            return ReadOptions.ReadInteger("Choose an option: ");
         }
 
-        public static void HeaderTableAlpha()
-        {
-            string header = "|Country       |Monthly production |";
-            string lines = "====================================";
-            WriteLine(lines);
-            WriteLine(header);
-            WriteLine(lines);
-        }
 
         public static void PrintAll(Country[] table)
         {
-            HeaderTableAlpha();
+            HeaderTable.HeaderTable1();
 
             for (int i = 0; i < table.Length; i++)
             {
-                string[] s = new string[2];
-                s[0] = table[i].Name;
-                long monthlyProduction = table[i].ProcentFromTotalElectricalCurrent;
-                s[1] = monthlyProduction.ToString();
-
-                WriteLine($"|{s[0],-14}|{s[1],-19}|");
+                WriteLine($"|{table[i].Name,-14}|{table[i].MonthlyProductionElectricalCurrent.Number.ToString(),-19}|");
             }
         }
         
