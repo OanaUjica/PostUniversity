@@ -21,6 +21,7 @@ namespace Electricity_MVCProject.Model
         }
 
         public string Name { get; set; }
+        public NaturalNumber MonthlyProductionElectricalCurrent { get; set; }
         public long ProcentFromTotalElectricalCurrent { get; set; }
 
         public Boolean SmallerNameThan(Country country)
