@@ -1,8 +1,7 @@
 # Post University program in Computer Science
 
 
-A. Module 2 
-
+Semester 1
     1. Programming Fundamentals course:
         - Electricity-MVCProject
     
