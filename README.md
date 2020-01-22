@@ -7,6 +7,5 @@ Semester 1
         - Programming Fundamentals (Electricity-MVCProject)
     
     2. Data Structures course:
-
         - ShoeShop
         - SupermarketQueue
