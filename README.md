@@ -1,9 +1,10 @@
 # Post University program on Computer Science
 
-1. Module 2 
+A. Module 2 
 
-    a. Programming Fundamentals course
+    1. Programming Fundamentals course:
+        - Electricity-MVCProject
     
-2. CodeWars problems
+    2. Data Structures course:
 
-    a. SupermarketQueue
+        - SupermarketQueue
