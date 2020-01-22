@@ -34,11 +34,12 @@ namespace Electricity_MVCProject.Model
                         //Console.WriteLine($"number of lines = {numberOfLines}");                        
                         var categories = line.Split(",", StringSplitOptions.RemoveEmptyEntries);
                         var name = categories[0];
-                        var monthlyProcent = int.Parse(categories[1]);
+                        var monthlyProduction = (long)int.Parse(categories[1]);
 
+                        NaturalNumber electricity = new NaturalNumber(monthlyProduction);
                         countries[i] = new Country();
                         countries[i].Name = name;
-                        countries[i].ProcentFromTotalElectricalCurrent = monthlyProcent;
+                        countries[i].MonthlyProductionElectricalCurrent = electricity;
 
                         i++;
                     }
@@ -68,8 +69,9 @@ namespace Electricity_MVCProject.Model
                 var name = ReadString("Country name:");
                 countries[i].Name = name;
 
-                var electricity = ReadLong("Production of electricity:");
-                countries[i].MonthlyProductionElectricalCurrent.Number = electricity;
+                var number = ReadLong("Production of electricity:");
+                NaturalNumber electricity = new NaturalNumber(number);
+                countries[i].MonthlyProductionElectricalCurrent = electricity;
             }
             return countries;
         }
