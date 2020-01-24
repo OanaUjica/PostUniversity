@@ -50,8 +50,7 @@ namespace ShoeShop
         //negru, 32) și va plăti 75 (oricare variantă e corectă).
         static void Main(string[] args)
         {
-            Shop shop = new Shop();
-            shop.Database();
+            Shop shop = new Shop(Database.InitializeDatabase());
 
             Shoe newShoe = new Shoe(34, "red", 63);
             shop.Add(newShoe);

@@ -1,54 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace ShoeShop
 {
     class Shop
     {
-        private List<Shoe> shoes;
+        private readonly List<Shoe> shelf;
         SortAscendingShoesNumbers byNumber = new SortAscendingShoesNumbers();
 
-		/// <summary>
-		/// Database with all the initial shoes stored in the shop, sorted by number.
-		/// </summary>
-        public void Database()
-        {
-            var shoe1 = new Shoe(34, "green", 50);
-			var shoe2 = new Shoe(34, "gray", 32);
-
-			var shoe3 = new Shoe(35, "black", 35);
-			var shoe4 = new Shoe(35, "black", 10);
-			var shoe5 = new Shoe(35, "red", 71);
-
-			var shoe6 = new Shoe(36, "gray", 13);
-			var shoe7 = new Shoe(36, "green", 43);
-			var shoe8 = new Shoe(36, "black", 39);
-			var shoe9 = new Shoe(36, "black", 32);
-
-			var shoe10 = new Shoe(37, "black", 15);
-			var shoe11 = new Shoe(37, "green", 43);
-
-			var shoe12 = new Shoe(38, "black", 33);
-			var shoe13 = new Shoe(38, "black", 27);
-
-			this.shoes = new List<Shoe>();
-			shoes.Add(shoe1);
-			shoes.Add(shoe12);
-			shoes.Add(shoe3);
-			shoes.Add(shoe4);
-			shoes.Add(shoe5);
-			shoes.Add(shoe6);
-			shoes.Add(shoe10);
-			shoes.Add(shoe8);
-			shoes.Add(shoe9);
-			shoes.Add(shoe7);
-			shoes.Add(shoe11);
-			shoes.Add(shoe2);
-			shoes.Add(shoe13);
-
-			shoes.Sort(byNumber);
+		public Shop(List<Shoe> _shelf)
+		{
+			shelf = _shelf;
 		}
 
 		/// <summary>
@@ -57,8 +21,8 @@ namespace ShoeShop
 		/// <param name="shoe"></param>
 		public void Add(Shoe shoe)
 		{
-			shoes.Add(shoe);
-			shoes.Sort(byNumber);
+			shelf.Add(shoe);
+			shelf.Sort(byNumber);
 		}
 
 		/// <summary>
@@ -69,7 +33,7 @@ namespace ShoeShop
 		{
 			int minNumber = int.MaxValue;
 			int maxNumber = int.MinValue;
-			foreach (var shoe in shoes)
+			foreach (var shoe in shelf)
 			{
 				if (shoe.Number < minNumber) minNumber = shoe.Number;
 				if (shoe.Number > maxNumber) maxNumber = shoe.Number;
@@ -80,7 +44,7 @@ namespace ShoeShop
 			int count = 0;
 			for (int i = minNumber; i <= maxNumber; i++)
 			{
-				foreach (var shoe in shoes)
+				foreach (var shoe in shelf)
 				{
 					if (shoe.Number == i) count++;
 				}
@@ -90,6 +54,7 @@ namespace ShoeShop
 				count = 0;
 			}
 
+			Console.WriteLine("==============");
 			Console.WriteLine($"Min = {minStock}");
 			Console.WriteLine($"Max = {maxStock}");
 
@@ -103,18 +68,18 @@ namespace ShoeShop
 		public void Client()
 		{
 			Random randomIndex1 = new Random();
-			int indexShoe1 = randomIndex1.Next(0, shoes.Count);
+			int indexShoe1 = randomIndex1.Next(0, shelf.Count);
 			Random randomIndex2 = new Random();
-			int indexShoe2 = randomIndex2.Next(0, shoes.Count);
+			int indexShoe2 = randomIndex2.Next(0, shelf.Count);
 
 			List<Shoe> shoesTakenFromTheShelf = new List<Shoe>();
 			if (indexShoe1 < indexShoe2)
 			{
 				for (int i = indexShoe1; i <= indexShoe2; i++)
 				{
-					Shoe randomShoe = shoes.ElementAt(indexShoe1);
+					Shoe randomShoe = shelf.ElementAt(indexShoe1);
 					shoesTakenFromTheShelf.Add(randomShoe);
-					shoes.RemoveAt(indexShoe1);
+					shelf.RemoveAt(indexShoe1);
 				}
 
 				uint totalPrice = 0;
@@ -125,10 +90,11 @@ namespace ShoeShop
 				}
 
 				int clientNumber = 36;
+				Console.WriteLine("==============");
 				for (int i = 0; i < shoesTakenFromTheShelf.Count; i++)
-				{
+				{					
 					if (copy.ElementAt(i).Number == clientNumber)
-					{
+					{						
 						if (i % 2 == 0)
 						{
 							Shoe shoe = copy.ElementAt(i);
@@ -145,10 +111,11 @@ namespace ShoeShop
 				}
 
 				totalPrice = 0;
+				Console.WriteLine("==============");
 				for (int i = 0; i < shoesTakenFromTheShelf.Count; i++)
-				{
+				{					
 					if (copy.ElementAt(i).Number == clientNumber)
-					{
+					{						
 						if (i % 2 != 0)
 						{
 							Shoe shoe = copy.ElementAt(i);
@@ -166,11 +133,13 @@ namespace ShoeShop
 
 				foreach (var shoe in shoesTakenFromTheShelf)
 				{
-					shoes.Add(shoe);
+					shelf.Add(shoe);
 				}
-				shoes.Sort(byNumber);
+				shelf.Sort(byNumber);
 
-				foreach (var shoe in shoes)
+				Console.WriteLine("==============");
+				Console.WriteLine("Shelf");
+				foreach (var shoe in shelf)
 				{					
 					Console.WriteLine(shoe);
 				}
