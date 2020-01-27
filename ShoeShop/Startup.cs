@@ -10,15 +10,15 @@ namespace ShoeShop
         //pantof are o mărime, o culoare și un preț.
         //Ne trebuie un container pentru: a reține pantofii de pe raft
         //Funcționalități:
-        // Adăugați pantofi noi la raft(când vânzătorul aduce pantofi noi)
-        // Verificați dacă oferta de pantofi este echilibrată(oferta de pantofi se consideră echilibrată dacă
-        //diferența maximă dintre stocurile pentru fiecare mărime existentă este 3.
-        // O clientă mai specială, Marisol, are o metodă interesantă de a cumpăra pantofi. Alege în mod
-        //aleator 2 poziții de pe raft, și cere să-i fie aduse toate perechile de pantofi dintre cele 2 poziții
-        //(aceste elemente sunt eliminate de pe raft). Clienta parcurge șirul de pantofi și dintre acele
-        //perechi care corespund cu mărimea ei, alege fiecare a 2-a pereche de pantofi.Restul pantofilor
-        //sunt puși înapoi pe raft. Afișați lista pantofilor cumpărați de clienta, lista pantofilor rămași pe
-        //raft după plecarea ei și prețul plătit de ea.
+        // 1. Adăugați pantofi noi la raft(când vânzătorul aduce pantofi noi)
+        // 2. Verificați dacă oferta de pantofi este echilibrată(oferta de pantofi se consideră echilibrată dacă
+        //    diferența maximă dintre stocurile pentru fiecare mărime existentă este 3.
+        // 3. O clientă mai specială, Marisol, are o metodă interesantă de a cumpăra pantofi. Alege în mod
+        //    aleator 2 poziții de pe raft, și cere să-i fie aduse toate perechile de pantofi dintre cele 2 poziții
+        //    (aceste elemente sunt eliminate de pe raft). Clienta parcurge șirul de pantofi și dintre acele
+        //    perechi care corespund cu mărimea ei, alege fiecare a 2-a pereche de pantofi.Restul pantofilor
+        //    sunt puși înapoi pe raft. Afișați lista pantofilor cumpărați de clienta, lista pantofilor rămași pe
+        //    raft după plecarea ei și prețul plătit de ea.
 
         //Exemple:
         // Să presupunem că la un moment dat avem următoarele pantofi:
@@ -50,13 +50,19 @@ namespace ShoeShop
         //negru, 32) și va plăti 75 (oricare variantă e corectă).
         static void Main(string[] args)
         {
-            Shop shop = new Shop(Database.InitializeDatabase());
+            // Instantiation of the shop with the shoes added from the database.
+            Shop shelf = new Shop(Database.InitializeDatabase());
 
+            // Add a new pair of shoes on the shelf.
             Shoe newShoe = new Shoe(34, "red", 63);
-            shop.Add(newShoe);
+            shelf.Add(newShoe);
 
-            Console.WriteLine($"The offer is balanced: {shop.isABalancedOffer()}");
-            shop.Client();
+            // Verify if the shop has the offer balanced or not.
+            Console.WriteLine($"The offer is balanced: {shelf.isBalancedTheOffer()}");
+
+            // Print the list of shoes bought by a client and the price paid.
+            // Print the list of shoes that will remain on the shelf after the client bought some of them.
+            shelf.Client();
         }
     }
 }

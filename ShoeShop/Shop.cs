@@ -29,19 +29,25 @@ namespace ShoeShop
 		/// Verify is the offer of shoes in balanced or not.
 		/// </summary>
 		/// <returns></returns>
-		public Boolean isABalancedOffer()
+		public Boolean isBalancedTheOffer()
 		{
-			int minNumber = int.MaxValue;
-			int maxNumber = int.MinValue;
+			var minNumber = int.MaxValue;
+			var maxNumber = int.MinValue;
 			foreach (var shoe in shelf)
 			{
-				if (shoe.Number < minNumber) minNumber = shoe.Number;
-				if (shoe.Number > maxNumber) maxNumber = shoe.Number;
+				if (shoe.Number < minNumber)
+				{
+					minNumber = shoe.Number;
+				}
+				if (shoe.Number > maxNumber) 
+				{ 
+					maxNumber = shoe.Number; 
+				}
 			}
 
-			int minStock = int.MaxValue;
-			int maxStock = int.MinValue;
-			int count = 0;
+			var minStock = int.MaxValue;
+			var maxStock = int.MinValue;
+			var count = 0;
 			for (int i = minNumber; i <= maxNumber; i++)
 			{
 				foreach (var shoe in shelf)
@@ -49,8 +55,15 @@ namespace ShoeShop
 					if (shoe.Number == i) count++;
 				}
 
-				if (count < minStock) minStock = count;
-				if (count > maxStock) maxStock = count;
+				if (count < minStock)
+				{
+					minStock = count;
+				}
+
+				if (count > maxStock)
+				{
+					maxStock = count;
+				}
 				count = 0;
 			}
 
@@ -58,8 +71,14 @@ namespace ShoeShop
 			Console.WriteLine($"Min = {minStock}");
 			Console.WriteLine($"Max = {maxStock}");
 
-			if (maxStock - minStock <= 3) return true;
-			else return false;
+			if (maxStock - minStock <= 3)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		/// <summary>
@@ -68,11 +87,11 @@ namespace ShoeShop
 		public void Client()
 		{
 			Random randomIndex1 = new Random();
-			int indexShoe1 = randomIndex1.Next(0, shelf.Count);
+			var indexShoe1 = randomIndex1.Next(0, shelf.Count);
 			Random randomIndex2 = new Random();
-			int indexShoe2 = randomIndex2.Next(0, shelf.Count);
+			var indexShoe2 = randomIndex2.Next(0, shelf.Count);
 
-			List<Shoe> shoesTakenFromTheShelf = new List<Shoe>();
+			var shoesTakenFromTheShelf = new List<Shoe>();
 			if (indexShoe1 < indexShoe2)
 			{
 				for (int i = indexShoe1; i <= indexShoe2; i++)
@@ -83,7 +102,7 @@ namespace ShoeShop
 				}
 
 				uint totalPrice = 0;
-				List<Shoe> copy = new List<Shoe>();
+				var copy = new List<Shoe>();
 				foreach (var shoe in shoesTakenFromTheShelf)
 				{
 					copy.Add(shoe);
