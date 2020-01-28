@@ -50,25 +50,29 @@ namespace ShoeShop
         //negru, 32) și va plăti 75 (oricare variantă e corectă).
         static void Main(string[] args)
         {
-            int option = Menu.Options();            
-
-            // Instantiation of the shop with the shoes added from the database.
-            var shelf = new Shop(Database.InitializeDatabase());
+            int option = Menu.Options();
+            Shop shelf = null;
 
             while (option != 0)
             {
                 switch (option)
                 {
                     case 1:
-                        // Add a new pair of shoes on the shelf.
-                        var newShoe = new Shoe(34, "red", 63);
-                        shelf.Add(newShoe);
+                        // Instantiate and print the shop's shelf with the shoes added from the database.
+                        shelf = new Shop(Database.InitializeDatabase());
+                        shelf.PrintDatabase();
                         break;
                     case 2:
+                        // Add a new pair of shoes on the shelf and print the shelf updated.
+                        var newShoe = new Shoe(34, "red", 63);
+                        shelf.Add(newShoe);
+                        shelf.PrintShelfUpdatedWithNewShoe();
+                        break;
+                    case 3:
                         // Verify if the shop has the offer balanced or not.
                         Console.WriteLine($"The offer is balanced: {shelf.isBalancedTheOffer()}");
                         break;
-                    case 3:
+                    case 4:
                         // Print the list of shoes bought by a client and the price paid.
                         // Print the list of shoes that will remain on the shelf after the client bought some of them.
                         shelf.Client();
