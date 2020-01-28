@@ -50,19 +50,36 @@ namespace ShoeShop
         //negru, 32) și va plăti 75 (oricare variantă e corectă).
         static void Main(string[] args)
         {
+            int option = Menu.Options();            
+
             // Instantiation of the shop with the shoes added from the database.
-            Shop shelf = new Shop(Database.InitializeDatabase());
+            var shelf = new Shop(Database.InitializeDatabase());
 
-            // Add a new pair of shoes on the shelf.
-            Shoe newShoe = new Shoe(34, "red", 63);
-            shelf.Add(newShoe);
-
-            // Verify if the shop has the offer balanced or not.
-            Console.WriteLine($"The offer is balanced: {shelf.isBalancedTheOffer()}");
-
-            // Print the list of shoes bought by a client and the price paid.
-            // Print the list of shoes that will remain on the shelf after the client bought some of them.
-            shelf.Client();
+            while (option != 0)
+            {
+                switch (option)
+                {
+                    case 1:
+                        // Add a new pair of shoes on the shelf.
+                        var newShoe = new Shoe(34, "red", 63);
+                        shelf.Add(newShoe);
+                        break;
+                    case 2:
+                        // Verify if the shop has the offer balanced or not.
+                        Console.WriteLine($"The offer is balanced: {shelf.isBalancedTheOffer()}");
+                        break;
+                    case 3:
+                        // Print the list of shoes bought by a client and the price paid.
+                        // Print the list of shoes that will remain on the shelf after the client bought some of them.
+                        shelf.Client();
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid option!");
+                        option = Menu.Options();
+                        break;
+                }
+                option = Menu.Options();
+            }
         }
     }
 }
