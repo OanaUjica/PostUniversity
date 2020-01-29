@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace ShoeShop
+namespace ShoeShop.Model
 {
     class SortAscendingShoesNumbers : IComparer<Shoe>
     {

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ShoeShop.Model;
 using System.Collections.Generic;
-using System.Text;
 
-namespace ShoeShop
+
+namespace ShoeShop.Data
 {
     class Database
     {

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using ShoeShop.Model;
+using ShoeShop.View;
+using ShoeShop.Data;
+using System;
 
-namespace ShoeShop
+namespace ShoeShop.Controller
 {
     class Startup
     {
@@ -70,7 +73,7 @@ namespace ShoeShop
                         break;
                     case 3:
                         // Verify if the shop has the offer balanced or not.
-                        Console.WriteLine($"The offer is balanced: {shelf.isBalancedTheOffer()}");
+                        Console.WriteLine($"The offer is balanced: {shelf.IsBalancedTheOffer()}");
                         break;
                     case 4:
                         // Print the list of shoes bought by a client and the price paid.
