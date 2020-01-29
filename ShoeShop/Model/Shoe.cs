@@ -1,6 +1,6 @@
 ﻿
 
-namespace ShoeShop
+namespace ShoeShop.Model
 {
     class Shoe
     {

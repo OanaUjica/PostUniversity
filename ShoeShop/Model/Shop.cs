@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace ShoeShop
+namespace ShoeShop.Model
 {
     class Shop
     {
@@ -52,7 +52,7 @@ namespace ShoeShop
 		/// Verify is the offer of shoes in balanced or not.
 		/// </summary>
 		/// <returns></returns>
-		public Boolean isBalancedTheOffer()
+		public Boolean IsBalancedTheOffer()
 		{
 			var minNumber = int.MaxValue;
 			var maxNumber = int.MinValue;
