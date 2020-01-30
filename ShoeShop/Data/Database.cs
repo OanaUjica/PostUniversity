@@ -6,14 +6,12 @@ namespace ShoeShop.Data
 {
     class Database
     {
-		
-
 		/// <summary>
 		/// Database with all the initial shoes stored in the shop, sorted by number.
 		/// </summary>
 		public static List<Shoe> InitializeDatabase()
 		{
-			SortAscendingShoesNumbers byNumber = new SortAscendingShoesNumbers();
+			SortAscendingByNumber byNumber = new SortAscendingByNumber();
 			List<Shoe> shelf = new List<Shoe>();
 
 			var shoe1 = new Shoe(34, "green", 50);
@@ -51,6 +49,5 @@ namespace ShoeShop.Data
 			shelf.Sort(byNumber);
 			return shelf;
 		}
-
 	}
 }

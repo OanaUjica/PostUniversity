@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ShoeShop.Model
 {
-    class SortAscendingShoesNumbers : IComparer<Shoe>
+    class SortAscendingByNumber : IComparer<Shoe>
     {
         public int Compare(Shoe shoe1, Shoe shoe2)
         {

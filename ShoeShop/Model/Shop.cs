@@ -8,14 +8,16 @@ namespace ShoeShop.Model
     class Shop
     {
         private readonly List<Shoe> shelf;
-        SortAscendingShoesNumbers byNumber = new SortAscendingShoesNumbers();
+        SortAscendingByNumber byNumber = new SortAscendingByNumber();
 
 		public Shop(List<Shoe> _shelf)
 		{
 			shelf = _shelf;
 		}
 
-
+		/// <summary>
+		/// Print to console the initial list of shoes that are on the shelf.
+		/// </summary>
 		public void PrintDatabase()
 		{
 			shelf.Sort(byNumber);
@@ -27,8 +29,9 @@ namespace ShoeShop.Model
 			}
 			Console.WriteLine("==========================");
 		}
+
 		/// <summary>
-		/// Add a new pair of shoes in the shop and sort the the shoes after their number.
+		/// Add a new pair of shoes on the shelf and sort the shoes after their number.
 		/// </summary>
 		/// <param name="shoe"></param>
 		public void Add(Shoe shoe)
@@ -37,6 +40,9 @@ namespace ShoeShop.Model
 			shelf.Sort(byNumber);
 		}
 
+		/// <summary>
+		/// Print to console the list of shoes that are on the shelf after the addition of a new pair of shoes.
+		/// </summary>
 		public void PrintShelfUpdatedWithNewShoe()
 		{
 			Console.WriteLine("====================================");
@@ -49,9 +55,9 @@ namespace ShoeShop.Model
 		}
 
 		/// <summary>
-		/// Verify is the offer of shoes in balanced or not.
+		/// Verify if the offer of shoes is balanced or not.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns> True or false. </returns>
 		public Boolean IsBalancedTheOffer()
 		{
 			var minNumber = int.MaxValue;
@@ -105,11 +111,10 @@ namespace ShoeShop.Model
 		}
 
 		/// <summary>
-		/// Print the total price that the client will pay for the selected shoes and the list of shoes left on the shelf.
+		/// Print the total price that a client will pay for the selected shoes and the list of shoes left on the shelf.
 		/// </summary>
 		public void Client()
 		{
-
 			int indexShoe1 = RandomIndex1();
 			int indexShoe2 = RandomIndex2(indexShoe1);
 
@@ -120,33 +125,36 @@ namespace ShoeShop.Model
 				shoesTakenFromTheShelf.Add(randomShoe);
 				shelf.RemoveAt(indexShoe1);
 			}
-
-			uint totalPrice = 0;
+			
 			var copy = new List<Shoe>();
 			foreach (var shoe in shoesTakenFromTheShelf)
 			{
 				copy.Add(shoe);
 			}
 
-			int clientNumber = 36;
+			Console.Write("Please enter the shoe number of the customer: ");
+			int customerNumber = int.Parse(Console.ReadLine());
+
 			Console.WriteLine("==================================");
-			Console.WriteLine("List of shoes bought by the client");
+			Console.WriteLine("List of shoes bought by the customer");
+			uint totalPrice = 0;
+			Shoe shoeChosenByTheCustomer = null;
 			for (int i = 0; i < shoesTakenFromTheShelf.Count; i+=2)
 			{
-				if (copy.ElementAt(i).Number == clientNumber)
-				{
+				if (copy.ElementAt(i).Number == customerNumber)
+				{					
 					if (i % 2 == 0)
 					{
-						Shoe shoe = copy.ElementAt(i);
-						totalPrice += shoe.Price;
-						shoesTakenFromTheShelf.Remove(shoe);	
-						Console.WriteLine(shoe);
+						shoeChosenByTheCustomer = copy.ElementAt(i);
+						totalPrice += shoeChosenByTheCustomer.Price;
+						shoesTakenFromTheShelf.Remove(shoeChosenByTheCustomer);	
+						Console.WriteLine(shoeChosenByTheCustomer);
 					}
 				}
 			}
 			if (totalPrice == 0)
 			{
-				Console.WriteLine("There is no pair of shoes in the even selected range that has the same number as the client.");
+				Console.WriteLine("There is no pair of shoes in the even selected range that has the same number as the customer.");
 			}
 			else
 			{
@@ -155,29 +163,30 @@ namespace ShoeShop.Model
 
 			totalPrice = 0;
 			Console.WriteLine("==================================");
-			Console.WriteLine("List of shoes bought by the client");
+			Console.WriteLine("List of shoes bought by the customer");
 			for (int i = 0; i < shoesTakenFromTheShelf.Count; i+=2)
 			{
-				if (copy.ElementAt(i).Number == clientNumber)
+				if (copy.ElementAt(i).Number == customerNumber)
 				{
 					if (i % 2 != 0)
 					{
-						Shoe shoe = copy.ElementAt(i);
-						totalPrice += shoe.Price;
-						shoesTakenFromTheShelf.Remove(shoe);
-						Console.WriteLine(shoe);
+						shoeChosenByTheCustomer = copy.ElementAt(i);
+						totalPrice += shoeChosenByTheCustomer.Price;
+						shoesTakenFromTheShelf.Remove(shoeChosenByTheCustomer);
+						Console.WriteLine(shoeChosenByTheCustomer);
 					}
 				}
 			}
 			if (totalPrice == 0)
 			{
-				Console.WriteLine("There is no pair of shoes in the odd selected range that has the same number as the client.");
+				Console.WriteLine("There is no pair of shoes in the odd selected range that has the same number as the customer.");
 			}
 			else
 			{
 				Console.WriteLine($"Total price = {totalPrice}");
 			}
 			Console.WriteLine("==================================");
+
 
 			foreach (var shoe in shoesTakenFromTheShelf)
 			{
