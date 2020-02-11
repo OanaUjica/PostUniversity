@@ -1,8 +1,9 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace GenericCollectionsImplementedWithDynamicArray
 {
-    internal class Bag<T> : IBag<T>
+    internal class Bag<T> : IBag<T>, IEnumerable<T>
     {
         private T[] elements;
         private uint capacity;
@@ -78,6 +79,24 @@ namespace GenericCollectionsImplementedWithDynamicArray
                 aux[i] = elements[i];
             }
             this.elements = aux;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            int count = 0;
+            foreach (var item in elements)
+            {
+                if (count < length)
+                {
+                    yield return item;
+                }
+                count++;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new System.NotImplementedException();
         }
     }
 
