@@ -9,3 +9,4 @@ Semester 1
     2. Data Structures course:
         - ShoeShop
         - SupermarketQueue
+        - CollectionsImplementedWithDynamicArray
