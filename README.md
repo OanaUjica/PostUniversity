@@ -10,3 +10,5 @@ Semester 1
         - ShoeShop
         - SupermarketQueue
         - GenericCollectionsImplementedWithDynamicArray
+    3. OOP course:
+        - ServiceAuto
