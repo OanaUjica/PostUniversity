@@ -7,6 +7,11 @@ namespace ServiceAuto.Domain
 {
     class CarValidator
     {
+        /// <summary>
+        /// Validates a car.
+        /// Raises RuntimeException if there are validation errors.
+        /// </summary>
+        /// <param name="car"> The car to validate. </param>
         public void Validator(Car car)
         {
             string license = car.LicensePlate;
@@ -37,19 +42,7 @@ namespace ServiceAuto.Domain
     [Serializable]
     internal class RuntimeException : Exception
     {
-        public RuntimeException()
-        {
-        }
-
         public RuntimeException(string message) : base(message)
-        {
-        }
-
-        public RuntimeException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
-
-        protected RuntimeException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }
