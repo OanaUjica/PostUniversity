@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ServiceAuto.Domain;
+using ServiceAuto.Repository;
+using ServiceAuto.Service;
+using ServiceAuto.UI;
+using System;
 
 namespace ServiceAuto
 {
@@ -17,7 +21,12 @@ namespace ServiceAuto
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CarValidator carValidator = new CarValidator();
+            CarRepository carRepository = new CarRepository(carValidator);
+            CarService carService = new CarService(carRepository);
+
+            ConsoleUI console = new ConsoleUI(carService);
+            console.runUserInterface();
         }
     }
 }
